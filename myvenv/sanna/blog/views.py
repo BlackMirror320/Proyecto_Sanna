@@ -23,8 +23,8 @@ def index(request):
 def inicio(request):
     return render(request, 'Principal/inicio.html', {'title':'inicio'})
 
-def contacto(request):
-    return render(request, 'Principal/contacto.html', {'title':'contacto'})
+def acercade(request):
+    return render(request, 'Principal/acercade.html', {'title':'acercade'})
 
 #ESTE ES UN EXPERIMENTAL PARA VER SI SIENDO SUPER USER LOGEADO, LLEVABA COMO INDEX AL INICIO_FARMACIA 
 #@login_required(login_url='login')                              #Solo se muestra logeado

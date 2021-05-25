@@ -27,8 +27,8 @@ urlpatterns = [
     #CARPETA PRINCIPAL
     path('', views.index, name="index"),
     path('inicio/', views.inicio, name="inicio"),
-    path('contacto/', views.contacto, name="contacto"),
+    path('acercade/', views.acercade, name="acercade"),
     path('inicio_farmacia/<int:id>', views.inicio_farmacia, name="inicio_farmacia"),
-    
+
 
 ]
