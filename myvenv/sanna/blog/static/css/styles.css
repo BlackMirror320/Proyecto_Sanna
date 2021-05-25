@@ -11036,6 +11036,7 @@ html {
 .portfolio-modal .portfolio-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;
+  color:red;
 }
 @media (min-width: 992px) {
   .portfolio-modal .portfolio-modal-title {
