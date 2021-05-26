@@ -568,8 +568,9 @@ progress {
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 75%;
   height: auto;
+  align-items: center;
 }
 
 .img-thumbnail {
@@ -607,6 +608,7 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  align-content: center;
 }
 
 @media (min-width: 576px) {
@@ -11036,6 +11038,7 @@ html {
 .portfolio-modal .portfolio-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;
+  color:red;
 }
 @media (min-width: 992px) {
   .portfolio-modal .portfolio-modal-title {
