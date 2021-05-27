@@ -29,6 +29,6 @@ urlpatterns = [
     path('inicio/', views.inicio, name="inicio"),
     path('acercade/', views.acercade, name="acercade"),
     path('inicio_farmacia/<int:id>', views.inicio_farmacia, name="inicio_farmacia"),
-
-
+    path('login',views.login,name='login'),
+    path('register',views.register,name='register'),
 ]

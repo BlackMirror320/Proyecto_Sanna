@@ -4,7 +4,7 @@ from django.views.generic.edit import FormView
 
 #Importado de modelos que aún no existen, solo son un ejemplo.
 #from blog.forms import CreateUserForm, ClienteForm, ProductForm
-from blog.models import *
+#from blog.models import *
 from django import forms
 
 #Imports para el manejo de usuarios
@@ -26,14 +26,20 @@ def inicio(request):
 def acercade(request):
     return render(request, 'Principal/acercade.html', {'title':'acercade'})
 
+def login(request):
+    return render(request,'Credenciales/login.html', {'title':'login'})
+
+def register(request):
+    return render(request,'Credenciales/registro.html', {'title':'register'})
+
 #ESTE ES UN EXPERIMENTAL PARA VER SI SIENDO SUPER USER LOGEADO, LLEVABA COMO INDEX AL INICIO_FARMACIA 
 #@login_required(login_url='login')                              #Solo se muestra logeado
 #@user_passes_test((lambda u: u.is_superuser),login_url='login') #Indico Superusuario
 #def index(request):
 #    return render(request, 'Principal/inicio_farmacia.html', {'title':'index'})
 
-@login_required(login_url='login')                              #Solo se muestra logeado
-@user_passes_test((lambda u: u.is_superuser),login_url='login') #Indico Superusuario
+#@login_required(login_url='login')                              #Solo se muestra logeado
+#@user_passes_test((lambda u: u.is_superuser),login_url='login') #Indico Superusuario
 def inicio_farmacia(request):
     return render(request, 'Principal/inicio_farmacia.html', {'title':'index'})
 
