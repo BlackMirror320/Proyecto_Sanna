@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.generic.edit import FormView
 
@@ -14,7 +14,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .models import User
-import mysql.connector
+from mysql.connector import MySQLConnection, Error
+from python_mysql_dbconfig import read_db_config
 from operator import itemgetter
 
 
@@ -42,7 +43,8 @@ def register(request):
         user.mail= request.POST['mail']
         user.fono= request.POST['fono']
         user.passwd= request.POST['passwd']
-        print(user.passwd)
+
+        
 
     return render(request,'Credenciales/registro.html', {'title':'register'})
 
