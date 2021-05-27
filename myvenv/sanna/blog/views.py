@@ -13,6 +13,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 
+from .models import User
+import mysql.connector
+from operator import itemgetter
+
+
 
 # Create your views here.
 # <----- REDIRECCIONES POR CARPETA ----->
@@ -30,6 +35,15 @@ def login(request):
     return render(request,'Credenciales/login.html', {'title':'login'})
 
 def register(request):
+    if request.method=="POST":
+        user = User()
+        user.nombre= request.POST['nombre']
+        user.rut= request.POST['rut']
+        user.mail= request.POST['mail']
+        user.fono= request.POST['fono']
+        user.passwd= request.POST['passwd']
+        print(user.passwd)
+
     return render(request,'Credenciales/registro.html', {'title':'register'})
 
 #ESTE ES UN EXPERIMENTAL PARA VER SI SIENDO SUPER USER LOGEADO, LLEVABA COMO INDEX AL INICIO_FARMACIA 
