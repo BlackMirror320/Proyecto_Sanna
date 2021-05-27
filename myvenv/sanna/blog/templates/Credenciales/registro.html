@@ -1,13 +1,84 @@
-<!--Esta es la página donde se hará el registro de usuarios-->
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro de Usuario</title>
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
+{% load static %}
 
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Digiwealth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="{% static 'css/Credenciales/registro.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body class="form">
+    <header class="form__header">
+        <div class="form__logo">
+            <a href="index.html"><img src="{% static 'img/logo/logo1.png' %}" alt="Heptacore"></a>
+        </div>
+        <div class="form__separador">
+
+        </div>
+        <span class="form__nombre">Registro Usuario</span>
+    </header>
+    <form action="" class="form__content" method="POST">
+
+        <div class="input-group center-fix">
+            <div class="input-group__icon">
+                <i class="lnr lnr-user"></i>
+            </div>
+            <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" class="input-group__input">
+        </div>
+
+        <div class="input-group center-fix">
+            <div class="input-group__icon">
+                <i class="lnr lnr-user"></i>
+            </div>
+            <input type="text" placeholder="RUT sin punto ni guión" name="rut" id="rut" class="input-group__input">
+        </div>
+
+        <div class="input-group center-fix">
+            <div class="input-group__icon">
+                <i class="lnr lnr-bubble"></i>
+            </div>
+            <input type="text" placeholder="Correo Electrónico" name="mail" id="mail" class="input-group__input">
+        </div>
+
+        <div class="input-group center-fix">
+            <div class="input-group__icon">
+                <i class="lnr lnr-lock"></i>
+            </div>
+            <input type="text" placeholder="Contraseña" name="pass" id="pass" class="input-group__input">
+        </div>
+
+        <div class="checkbox-group center-fix">
+            <input type="checkbox" name="terms" id="terms">
+            <label for="terms" class="checkbox-label">Acepto los <span id="terms">términos y condiciones de servicio.</span></label>
+        </div>
+        <div>
+            
+        </div>
+        <div class="submit-group center-fix">
+            <button class="btn btn--primary" type="submit">Registrarse          <i class="lnr lnr-chevron-right"></i></button>
+        </div>
+
+
+    </form>
+
+
+
+    <footer>
+        <div class="footer">
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident eaque incidunt dignissimos optio sunt cupiditate quae, esse tempore veniam illo cumque modi earum. Saepe aliquid voluptatum iusto earum? In accusantium optio non ipsam similique quae assumenda repellat debitis? Autem.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quod, itaque illum sed magni tempore similique nihil eligendi debitis libero assumenda, optio, suscipit deleniti odit at beatae minima? Temporibus, debitis assumenda. Asperiores consequuntur porro delectus libero et. Est, saepe cum.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus maxime officiis quaerat itaque deleniti ratione labore nemo ad non modi, eligendi odio mollitia nisi? Voluptate, recusandae fugiat nihil aperiam doloribus porro minima reprehenderit eum iste eius! Maiores facilis mollitia est?</span>
+            <span>&#169 Todos los derechos reservados</span>
+        </div>
+    </footer>
+</body>
+
+
+
 </html>
