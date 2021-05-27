@@ -24,11 +24,19 @@ from django.contrib.auth import views as auth_views
 #REDIRECCIONAMIENTOS
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #Crendeciales
+    path('login',views.login,name='login'),
+    path('register',views.register,name='register'),
+    #LISTA DE MEDICAMENTOS
+    path('medicamentos',views.medicamentos, name='medicamentos'),
     #CARPETA PRINCIPAL
     path('', views.index, name="index"),
     path('inicio/', views.inicio, name="inicio"),
     path('acercade/', views.acercade, name="acercade"),
     path('inicio_farmacia/<int:id>', views.inicio_farmacia, name="inicio_farmacia"),
-    path('login',views.login,name='login'),
-    path('register',views.register,name='register'),
+
+
+
+
+    
 ]
