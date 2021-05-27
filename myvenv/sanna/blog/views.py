@@ -61,6 +61,9 @@ def inicio_farmacia(request):
 
 # <=============================================>
 
+# <----- LISTA DE MEDICAMENTOS ----->
+def medicamentos(request):
+    return render(request, 'ListaMedicamentos/medicamentos.html', {'title':'medicamentos'})
 
 # <----- CREDENCIALES ----->
 #def registro(request):
