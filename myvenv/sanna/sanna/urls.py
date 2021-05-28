@@ -34,9 +34,7 @@ urlpatterns = [
     path('inicio/', views.inicio, name="inicio"),
     path('acercade/', views.acercade, name="acercade"),
     path('inicio_farmacia/<int:id>', views.inicio_farmacia, name="inicio_farmacia"),
-
-
-
+    path('register/',views.clientes, name="register")
 
     
 ]
