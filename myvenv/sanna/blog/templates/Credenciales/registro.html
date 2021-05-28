@@ -14,6 +14,7 @@
 </head>
 
 <body class="form">
+    
     <header class="form__header">
         <div class="form__logo">
             <a href="index.html"><img src="{% static 'img/logo/logo1.png' %}" alt="Heptacore"></a>
@@ -23,34 +24,41 @@
         </div>
         <span class="form__nombre">Registro Usuario</span>
     </header>
-    <form action="" class="form__content" method="POST">
-
+    <form action="/clientes/" class="form__content" method="POST">
+        {% csrf_token %}
         <div class="input-group center-fix">
             <div class="input-group__icon">
                 <i class="lnr lnr-user"></i>
             </div>
-            <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" class="input-group__input">
+            <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" class="input-group__input" {{ form.nombre}}> 
         </div>
 
         <div class="input-group center-fix">
             <div class="input-group__icon">
                 <i class="lnr lnr-user"></i>
             </div>
-            <input type="text" placeholder="RUT sin punto ni guión" name="rut" id="rut" class="input-group__input">
+            <input type="text" placeholder="RUT sin punto ni guión" name="rut" id="rut" class="input-group__input" {{ form.rut}}> 
         </div>
 
         <div class="input-group center-fix">
             <div class="input-group__icon">
                 <i class="lnr lnr-bubble"></i>
             </div>
-            <input type="text" placeholder="Correo Electrónico" name="mail" id="mail" class="input-group__input">
+            <input type="text" placeholder="Correo Electrónico" name="mail" id="mail" class="input-group__input" {{ form.mail}}> 
+        </div>
+
+        <div class="input-group center-fix">
+            <div class="input-group__icon">
+                <i class="lnr lnr-user"></i>
+            </div>
+            <input type="varchar" placeholder="Fono" name="fono" id="fono" class="input-group__input" {{ form.fono}}> 
         </div>
 
         <div class="input-group center-fix">
             <div class="input-group__icon">
                 <i class="lnr lnr-lock"></i>
             </div>
-            <input type="text" placeholder="Contraseña" name="pass" id="pass" class="input-group__input">
+            <input type="text" placeholder="Contraseña" name="passwd" id="passwd" class="input-group__input" {{ form.passwd}}> 
         </div>
 
         <div class="checkbox-group center-fix">
@@ -61,7 +69,7 @@
             
         </div>
         <div class="submit-group center-fix">
-            <button class="btn btn--primary" type="submit">Registrarse          <i class="lnr lnr-chevron-right"></i></button>
+            <button class="btn btn--primary" type="submit" value="Grabar">Registrarse          <i class="lnr lnr-chevron-right"></i></button>
         </div>
 
 
