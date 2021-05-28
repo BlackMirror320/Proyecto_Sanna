@@ -1,0 +1,84 @@
+<!--Esta página, es donde se listarán los medicamentos mediante una tabla, con algún filtro creado por script-->
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Listado de Medicamentos</title>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        {% include "header.html" %}
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menú
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Más Comprados</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'register' %}">Regístrate</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><br><br><br><br><br><br>
+    <div class="container d-flex align-items-center flex-column">
+      <h1 class="text-uppercase mb-0">Lista de Medicamentos</h1><br>
+        <table class="table table-dark font-weight-bold">
+            <thead>
+              <tr>
+                <th scope="col">N°</th>
+                <th scope="col"><center>Imagen del Medicamento</center></th>
+                <th scope="col"><center>Nombre Medicamento</center></th>
+                <th scope="col"><center>Concentración (mg)</center></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/paracetamol.jpg' %}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Paracetamol</center></td>
+                <td><br><br><br><center>500mg</center></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/Ibuprofeno_600MG_20C_BE_HD.jpg'%}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Ibuprofeno</center></td>
+                <td><br><br><br><center>600mg</center></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/aspirina.jpg' %}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Aspirina</center></td>
+                <td><br><br><br><center>100mg</center></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/Losartan_50MG_30C_BE_HD.jpg' %}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Losartan</center></td>
+                <td><br><br><br><center>50mg</center></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/metformina.jpg' %}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Glafornil</center></td>
+                <td><br><br><br><center>500mg</center></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/atorvastatina.jpg' %}" height="169" width="298"></center></td>
+                <td><br><br><br><center>Atorvastatina</center></td>
+                <td><br><br><br><center>10mg</center></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+          {% include "footer.html" %}
+    </body>
+</html>

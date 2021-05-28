@@ -1,0 +1,15 @@
+.centrado{
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+}
+
+.margen{
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+.padeado{
+    padding-bottom: -2.5%;
+}

@@ -1,0 +1,121 @@
+{% load static %}
+<!--Esta pagina será para mostrar cómo llegar a nuestra sucursal, comunicarse, entre otras cosas que sean afines a la misma-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" /> <!--No es necesario rellenarlo-->
+        <meta name="author" content="" /> <!--No es necesario rellenarlo-->
+        <title>Acerca de Nosotros</title>
+        <!-- Favicon-->
+        <link rel="icon" href="{% static 'img/favicon/faviconxbox.ico' %}" type="image/png" /> <!--ESTE ES EL ICONO AL LADO DEL TITLE-->
+        {% include "header.html" %}
+    </head>
+    <body id="page-top">
+        <!--TODO EL HTML SE METE AQUI-->
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menú
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'inicio' %}">Inicio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../ListaMedicamentos/medicamentos.html">Lista de Medicamentos</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#donde">Dónde nos Ubicamos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br/><br/><br/>
+
+        <section class="page-section mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary">Acerca de Nosotros</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom ">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row">
+                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
+                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                </div>
+                <!-- About Section Button-->
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary btn-xl btn-outline-secondary" href="https://startbootstrap.com/theme/freelancer/">
+                        <i class="fas fa-download me-2"></i>
+                        Free Download!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <header class="margen bg-primary text-white text-center" id="donde">
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading mb-0">Mapa para llegar a la tienda</h1><br/>
+                <!-- Icon Divider-->
+                <!-- Masthead Avatar Image-->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.6248539919106!2d-70.61717578480106!3d-33.43302358077892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf7b8a17a02b%3A0x29d0f904a70a87b0!2sAntonio%20Varas%20666%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1601341796792!5m2!1ses-419!2scl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <!-- Masthead Heading-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fa fa-h-square"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">DigiHealth Subdivisión DigiWealth</p>
+            </div>
+        </header>
+        <!-- Contact Section-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contáctanos</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Contact Section Form-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7">
+                        <form>
+                            <div class="form-floating">
+                                <input class="form-control" id="inputName" type="text" placeholder="Enter your name..." />
+                                <label for="inputName">Nombre</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="inputEmail" type="email" placeholder="Enter your email..." />
+                                <label for="inputEmail">Correo Electrónico</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number..." />
+                                <label for="inputPhone">Número de Teléfono</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="inputMessage" placeholder="Enter your message here..." style="height: 12rem"></textarea>
+                                <label for="inputMessage">Mensaje</label>
+                            </div>
+                            <br />
+                            <center><button class="btn btn-primary btn-xl" type="submit">Enviar</button></center>
+                        </form><br>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=====================================-->
+        <!--DIFERENTES SCRIPTS-->
+        <!--=====================================-->
+        {% include "footer.html" %}
+    </body>
+</html>
