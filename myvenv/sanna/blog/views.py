@@ -6,6 +6,8 @@ from django.views.generic.edit import FormView
 #from blog.forms import CreateUserForm, ClienteForm, ProductForm
 #from blog.models import *
 from django import forms
+from blog.models import User
+from blog.forms import UsuarioForm
 
 #Imports para el manejo de usuarios
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +17,6 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .models import User
 from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_db_config
 from operator import itemgetter
 
 
@@ -36,17 +37,21 @@ def login(request):
     return render(request,'Credenciales/login.html', {'title':'login'})
 
 def register(request):
-    if request.method=="POST":
-        user = User()
-        user.nombre= request.POST['nombre']
-        user.rut= request.POST['rut']
-        user.mail= request.POST['mail']
-        user.fono= request.POST['fono']
-        user.passwd= request.POST['passwd']
-
-        
-
     return render(request,'Credenciales/registro.html', {'title':'register'})
+
+def clientes(request):
+    if request.method == "POST":
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return request.redirect('/clientes')
+            except:
+                pass
+    else:
+        form = UsuarioForm()
+        clientes = User.objects.all()
+    return render(request,'Credenciales/registro.html',{'form': form, 'Clientes': clientes})
 
 #ESTE ES UN EXPERIMENTAL PARA VER SI SIENDO SUPER USER LOGEADO, LLEVABA COMO INDEX AL INICIO_FARMACIA 
 #@login_required(login_url='login')                              #Solo se muestra logeado
