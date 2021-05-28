@@ -12,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
-
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 # <----- REDIRECCIONES POR CARPETA ----->
@@ -26,12 +26,28 @@ def inicio(request):
 def acercade(request):
     return render(request, 'Principal/acercade.html', {'title':'acercade'})
 
-def login(request):
-    return render(request,'Credenciales/login.html', {'title':'login'})
+#def login(request):
+ #   return render(request,'Credenciales/login.html', {'title':'login'})
 
 def register(request):
-    return render(request,'Credenciales/registro.html', {'title':'register'})
+   
 
+    return render(request,'Credenciales/registro.html',{'title':'register'})
+
+def registro(request):
+     data = {
+        'form': CustomUserCreationForm()
+    }
+     if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request,user)
+            messages.success(request, "Te has registrado correctamente")
+            return redirect(to="/")
+        data["form"] = formulario
+     return render(request,'registration/registrob.html',data)
 #ESTE ES UN EXPERIMENTAL PARA VER SI SIENDO SUPER USER LOGEADO, LLEVABA COMO INDEX AL INICIO_FARMACIA 
 #@login_required(login_url='login')                              #Solo se muestra logeado
 #@user_passes_test((lambda u: u.is_superuser),login_url='login') #Indico Superusuario
