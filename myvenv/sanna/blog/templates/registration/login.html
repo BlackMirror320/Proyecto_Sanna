@@ -35,12 +35,30 @@
 	<link rel="stylesheet" href="{% static 'css/Credenciales/login.css' %}" type="text/css">
 </head>
 <body>
+	        <!-- Navigation-->
+			<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+				<div class="container">
+					<a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+					<button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+						Menú
+						<i class="fas fa-bars"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 	
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
+				<h3>Inicio de Sesión</h3>
 				<div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
@@ -70,14 +88,15 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
+					No tienes una cuenta?<a href="#">Regístrate</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a href="#">Olvidaste tu contraseña?</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 </body>
 </html>
