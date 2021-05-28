@@ -24,7 +24,7 @@
         <span class="form__nombre">Registro Usuario</span>
     </header>
     <form action="" class="form__content" method="POST">
-
+      {% csrf_token %}
         <div class="input-group center-fix">
             <div class="input-group__icon">
                 <i class="lnr lnr-user"></i>
