@@ -3959,6 +3959,8 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
 }
+
+
 .navbar-brand {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -3967,6 +3969,12 @@ textarea.form-control-lg {
   text-decoration: none;
   white-space: nowrap;
 }
+
+.nav-register-login{
+  display: flex;
+  
+}
+
 .navbar-nav {
   display: flex;
   flex-direction: column;
@@ -7026,6 +7034,12 @@ textarea.form-control-lg {
 
 .ms-5 {
   margin-left: 3rem !important;
+}
+.ms-6 {
+  margin-left: 4rem !important;
+}
+.ms-7 {
+  margin-left: 5rem !important;
 }
 
 .ms-auto {
