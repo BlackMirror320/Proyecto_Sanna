@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import AutoField
 from django.utils import timezone
 
 class Post(models.Model):
@@ -26,7 +27,8 @@ class Medicamento(models.Model):
     	precio = models.IntegerField()
     	url = models.ImageField(default='not_found')
     	stock = models.IntegerField(default=0)
-    	bioequivalente = models.ForeignKey('bioequivalente', on_delete=models.CASCADE,default='')
+    	bioequivalente = models.ForeignKey('Bioequivalente', on_delete=models.CASCADE,default='')
+#        id_farmacia_fk = models.ForeignKey('Farmacia', on_delete=models.CASCADE,default='')
     	class Meta:
         	db_table = "medicamento"
     	def __str__(self):
@@ -34,13 +36,28 @@ class Medicamento(models.Model):
 
 
 
-#TABLA DEL GENERO DE LOS PRODUCTOS, donde si el genero es 1, puede ser accion o 2 es rpg <- ejemplo
+#TABLA DE BIOEQUIVALENCIA DE LOS MEDICAMENTOS, donde si el genero es 1, puede ser accion o 2 es rpg <- ejemplo
 #Tabla de si es Bioequivalente o no
 class Bioequivalente(models.Model):
     bioequivalente = models.CharField(max_length=100)
     class Meta:
         db_table = "bioequivalente"
     def __str__(self):
-        return u'{0}'.format(self.genero_producto)
+        return u'{0}'.format(self.bioequivalente)
 
-#random
+#Tabla Farmacia
+#class Farmacia(models.Model):
+#    id_farmacia = models.AutoField(primary_key=True)
+#    nombre_farmacia = models.CharField(max_length=40)
+#    rut_farmacia = models.CharField(max_length=13)
+#    direccion_farmacia = models.CharField(max_length=200)
+#    class Meta:
+#        db_table = "farmacia"
+#    def __str__(self):
+#        return "id_farmacia:"+id_farmacia+", nombre_farmacia"+nombre_farmacia+", rut_farmacia"+rut_farmacia+", direccion_farmacia"+direccion_farmacia
+
+
+#id
+#nombre
+#rut
+#direccion

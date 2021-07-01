@@ -213,9 +213,9 @@ footer {
 }
 
 
-/* Producto */
+/* Medicamento */
 
-.producto {
+.medicamento {
     position: relative;
     overflow: hidden;
     border-radius: 5px;
@@ -224,7 +224,7 @@ footer {
     height: 20vw;
 }
 
-.producto__title {
+.medicamento__title {
     text-align: center;
     padding: 1rem;
     color: white;
@@ -234,7 +234,7 @@ footer {
     z-index: 2;
 }
 
-.producto__photo {
+.medicamento__photo {
     position: absolute;
     top: 0;
     left: 0;
@@ -243,7 +243,7 @@ footer {
     z-index: -1;
 }
 
-.producto__detalle {
+.medicamento__detalle {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -255,7 +255,7 @@ footer {
     z-index: 2;
 }
 
-.producto__precio {
+.medicamento__precio {
     display: inline-block;
     color: var(--primary-color-dark);
     font-weight: 500;
@@ -450,7 +450,7 @@ div.checkbox-group {
     padding: 2rem;
 }
 
-.productos-destacados {
+.medicamentos-destacados {
     padding: 2rem;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -491,10 +491,10 @@ div.checkbox-group {
     .carousel {
         height: 25vh;
     }
-    .productos-destacados {
+    .medicamentos-destacados {
         grid-template-columns: auto;
     }
-    .producto {
+    .medicamento {
         margin: .5rem auto;
         width: 100%;
         height: 80vw;

@@ -3,11 +3,70 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Perfil del Administrador</title>
+        <title>Listado de Medicamentos</title>
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        {% include "header.html" %}
     </head>
     <body>
-        
+      <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menú
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-2">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_superuser %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' %}">ADMIN. MEDICAMENTOS</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
+                    <li><span class="tamano"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
+                    {% else %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav><br><br><br><br><br><br>
+        <div class="container">
+            <form method="POST" action="/modificar_perfil/{{id_medicamento}}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table-striped">
+                        <tr>
+                            <td><input required type="text" name="first_name" id="first_name" class="form-control" placeholder="Ingrese su Nombre" > 
+                                <label for="first_name">Ingrese su Nombre</label></td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" name="last_name" id="last_name" class="form-control" placeholder="Ingrese su Apellido Paterno" >
+                            <label for="last_name">Ingrese su Apellido Paterno</label></td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" name="username" id="username" class="form-control" placeholder="Ingrese su Nombre" > 
+                            <label for="username">Ingrese un Usuario</label></td>
+                        </tr>
+                        <tr>
+                            <td><input required type="text" name="email" id="email" class="form-control" placeholder="Ingrese su Correo" >
+                                <label for="email">Ingrese su Correo</label></td>
+                        </tr>             
+                    </table>
+                    <center><input class="btn btn-primary" type="submit" value="Modificar Perfil"></center>
+                </div>
+            </form>
+        </div><br><br>
+        {% include "footer.html" %}
     </body>
 </html>

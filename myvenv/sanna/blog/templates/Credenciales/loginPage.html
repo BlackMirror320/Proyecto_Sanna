@@ -1,0 +1,83 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" /> <!--No es necesario rellenarlo-->
+        <meta name="author" content="" /> <!--No es necesario rellenarlo-->
+        <title>Inicio de Sesión del Usuario</title>
+        <!-- Favicon-->
+        <link rel="icon" href="{% static 'img/favicon/medicine.ico' %}" type="image/png" /> <!--ESTE ES EL ICONO AL LADO DEL TITLE-->
+        {% include "header.html" %}
+    </head>
+    <body class="form">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menú
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-2">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'inicio' %}">Inicio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_superuser %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' %}">ADMIN. MEDICAMENTOS</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
+                        <li><span class="tamano"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
+                        {% else %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav><br><br><br><br><br><br><br>
+        <div class="container" style="border-style:solid; border-color: gray; border-radius: 10px;"><br>
+            <center><h3 class="login-heading mb-4" style="color: gray; font-weight: bold;"><b>Bienvenido! Aquí puedes Iniciar Sesión</b></h3></center>
+                        <form action="" method="POST">
+                          {% csrf_token %}
+                          
+                        <div class="form-label-group container col-lg-6 pb-2">
+                            <label for="username">Usuario</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required autofocus> 
+                        </div>
+      
+                        <div class="form-label-group container col-lg-6 pb-2">
+                            <label for="password">Contraseña</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+                        </div>
+      
+                        <!--<div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
+                        </div>-->
+                        <center><div class="container col-lg-6 pt-2">
+                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Iniciar Sesión</button>                   
+                        </div></center>
+                        <br/>
+                        <div class="text-center">
+                            <a href="{% url 'registro' %}">¿Aún no se ha creado una Cuenta? Registrarse!</a>
+                        </div>
+                        <div class="container col-lg-6">
+                            <p style="color: white;">Olvidó su contraseña? <a href="{% url 'password_reset'%}">Actualiza tu contraseña!</a></p>   
+                        </div>
+                        {% for message in messages %}
+                        <p><b>{{message}}</b></p>
+                        {% endfor %}
+                        </form>
+                    </div>
+    </body>
+</html>
+

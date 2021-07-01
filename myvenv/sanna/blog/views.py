@@ -14,6 +14,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import *
 
+
 # Create your views here.
 # <----- REDIRECCIONES POR CARPETA ----->
 # <----- PRINCIPAL ----->
@@ -25,23 +26,6 @@ def inicio(request):
 
 def acercade(request):
     return render(request, 'Principal/acercade.html', {'title':'acercade'})
-
-#def login(request):
- #   return render(request,'Credenciales/login.html', {'title':'login'})
-
-def registro(request):
-    if request.user.is_authenticated:
-        return redirect('index2')
-    else:
-        form = CreateUserForm()
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Se registró el usuario ' + user)
-                return redirect('login')
-        return render(request, 'Credenciales/registro.html', {'form':form})
 
 
 
@@ -63,52 +47,136 @@ def medicamentos(request):
     return render(request, 'ListaMedicamentos/medicamentos.html', {'title':'medicamentos'})
 
 # <----- CREDENCIALES ----->
-#def registro(request):
-#    if request.user.is.authenticated:
-#        return redirect('/Principal/inicio.html')
-#    else:
-#        form = CreateUserForm() #Hay que crear el form de esto
-#        if request.method == 'POST':
-#            form = CreateUserForm(request.POST)
-#            if form.is_valid():
-#                form.save()
-#                user = form.cleaned_data.get('username')
-#                messages.success(request, 'Se registró el usuario ' + user)
-#                return redirect('Credenciales/login.html')
-#        return render(request, 'Credenciales/registro.html', {'form':form})
+def registro(request):
+    if request.user.is_authenticated:
+        return redirect('index2')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Se registró el usuario ' + user)
+                return redirect('login')
+        return render(request, 'Credenciales/registro.html', {'form':form})
 
-#def login(request):
-#    if request.user.is_authenticated:
-#        return redirect('/Principal/inicio.html')
-#    else:
-#        if request.method == 'POST':
-#            username = request.POST.get('username')
-#            password = request.POST.get('password')
-#
-#            user = authenticate(request, username = username, password=password)
-#
-#            if user is not None:
-#                login(request,user)
-#                return redirect('/Principal/inicio.html')
-#            else:
-#                messages.info(request,'Usuario o password incorrecto')
-#        return render(request,'Credenciales/login.html')
-#    
-#def logoutUser(request):
-#    logout(request)
-#    return redirect('Credenciales/login.html')
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('/Principal/inicio.html')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username = username, password=password)
+
+            if user is not None:
+                login(request,user)
+                return redirect('inicio')
+            else:
+                messages.info(request,'Usuario o password incorrecto')
+        return render(request,'Credenciales/loginPage.html')
+    
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 # <=============================================>
 
 
-# <----- LISTAMEDICAMENTOS ----->
+# <----- ADMINMEDICAMENTOS ----->
+@login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
+def admin_medicamento(request):
+    form = MedicamentoForm()
+    medicamentos = Medicamento.objects.all()
+    if request.method == 'POST':
+        print(request.POST)
+        form = MedicamentoForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('admin_medicamento')
+            except:
+                pass
+        else:
+            form = MedicamentoForm
+    context = {'form':form, 'medicamentos':medicamentos}
+    return render(request, 'ListaMedicamentos/admin_medicamento.html', context)
 
+
+
+@login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
+def crea_medicamento(request):
+    form = MedicamentoForm()
+    medicamentos = Medicamento.objects.all()
+    if request.method == 'POST':
+        print(request.POST)
+        form = MedicamentoForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('admin_medicamento')
+            except:
+                pass
+        else:
+            form = MedicamentoForm
+    context = {'form':form, 'medicamentos':medicamentos}
+    return render(request, 'ListaMedicamentos/crea_medicamento.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
+def edita_medicamento(request, id):
+    med = Medicamento.objects.get(id_medicamento=id)
+    form = MedicamentoForm(instance=med)
+    return render(request,'ListaMedicamentos/edita_medicamento.html', {'form':form, 'id_medicamento':med.id_medicamento})
+
+
+@login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
+def modificar(request,id):
+    med = Medicamento.objects.get(id_medicamento=id)
+    if request.method == 'POST':
+        print(request.POST)
+        form = MedicamentoForm(request.POST, request.FILES, instance=med)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_medicamento')
+            #messages.success(request, "Cambios Realizados!")
+
+@login_required(login_url='login')
+@user_passes_test((lambda u: u.is_superuser),login_url='login')
+def elimina_medicamento(request, id):
+    med = Medicamento.objects.get(id_medicamento=id)
+    med.delete()
+    return redirect('admin_medicamento')
 
 # <=============================================>
 
 
 # <----- PERFILES ----->
+@login_required(login_url='login')
+def perfil_usuario(request):
+    return render(request, 'Perfiles/perfil_usuario.html')
 
+@login_required(login_url='login')
+def perfil_admin(request,id):
+    user = User.objects.get(id = id)
+    form = CreateUserForm
+    return render(request, 'Perfiles/perfil_admin.html', {'form':form, 'id':user.id})
+
+@login_required(login_url='login')
+def modificar_perfil(request,id):
+    user = User.objects.get(id = id)
+    if request.method == 'POST':
+        print(request.POST)
+        form = UserCreationForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil_usuario')
 
 # <=============================================>
 
@@ -119,20 +187,25 @@ def medicamentos(request):
 # <=============================================>
 
 
-#------------------------------------------------------------------------------------------------------------------------------
-#ESTE ES EL REGISTRO DEL DANIER
-#def registro(request):
-#     data = {
-#        'form': CustomUserCreationForm()
-#    }
-#     if request.method == 'POST':
-#        formulario = CustomUserCreationForm(data=request.POST)
-#        if formulario.is_valid():
-#            formulario.save()
-#            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
-#            login(request,user)
-#            messages.success(request, "Te has registrado correctamente")
-#            return redirect(to="/")
-#        data["form"] = formulario
-#     return render(request,'registration/registrob.html',data)
-#------------------------------------------------------------------------------------------------------------------------------
+
+
+# <----- Largo de la contraseña mínimo ----->
+#class ValidatingPasswordChangeForm(auth.forms.PasswordChangeForm):
+#    MIN_LENGTH = 8
+#
+#    def clean_new_password1(self):
+#        password1 = self.cleaned_data.get('new_password1')
+#
+#        # At least MIN_LENGTH long
+#        if len(password1) < self.MIN_LENGTH:
+#            raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
+#
+#        # At least one letter and one non-letter
+#        first_isalpha = password1[0].isalpha()
+#        if all(c.isalpha() == first_isalpha for c in password1):
+#            raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
+#                                        " punctuation character.")
+#
+#        # ... any other validation you want ...
+#
+#        return password1

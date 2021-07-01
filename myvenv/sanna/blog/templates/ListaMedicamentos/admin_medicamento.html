@@ -1,13 +1,82 @@
 <!--En esta página, se hará un CRUD de los medicamentos-->
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Administración de medicamentos</title>
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" /> <!--No es necesario rellenarlo-->
+        <meta name="author" content="" /> <!--No es necesario rellenarlo-->
+        <title>Administrar Medicamentos</title>
+        <!-- Favicon-->
+        <link rel="icon" href="{% static 'img/favicon/medicine.ico' %}" type="image/png" /> <!--ESTE ES EL ICONO AL LADO DEL TITLE-->
+        {% include "header.html" %}
+        <body id="page-top">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+                    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menú
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-2">
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'inicio' %}">Inicio</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <ul class="navbar-nav ms-auto">
+                            {% if user.is_superuser %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' }%">ADMIN. MEDICAMENTOS</a></li>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
+                            <li><span class="tamano"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
+                            {% else %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <center><h1><b>LISTADO DE MEDICAMENTOS AÑADIDOS</b></h1></center><hr>
+                <center><a href="{% url 'crea_medicamento' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar Medicamento</a></center><br>
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <th>PRECIO</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th>BIOEQUIVALENTE</th>
+                            <th>IMAGEN MEDICAMENTO</th>
+                            <th colspan="2">ACCIONES</th>
+                        </tr>
+                        {% for med in medicamentos %}
+                        <tr>
+                            <td>{{med.nombre_medicamento}}</td>
+                            <td>${{med.precio}}</td>
+                            <td>{{med.descripcion}}</td>
+                            <td><center>{{med.bioequivalente}}</center></td>
+                            <td><center><img src="/media/{{med.url}}" width="50"></center></td>
+                            <td>
+                                <center><a href="/edita_medicamento/{{med.id_medicamento}}"> | <i class="fas fa-pencil-alt"></i> | </a></center>
+                            </td>
+                            <td>
+                                <center><a href="/elimina_medicamento/{{med.id_medicamento}}"> | <i class="far fa-trash-alt"></i> | </a></center>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </thead>
+            </table>
+            </div>
+            
+            {% include "footer.html" %}
     </body>
 </html>

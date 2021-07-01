@@ -11,7 +11,6 @@
         <!-- Favicon-->
         <link rel="icon" href="{% static 'img/favicon/medicine.ico' %}" type="image/png" /> <!--ESTE ES EL ICONO AL LADO DEL TITLE-->
         {% include "header.html" %}
-
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -33,8 +32,16 @@
             <div>
                 <div>
                     <ul class="navbar-nav ms-auto">
+                        {% if user.is_superuser %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' %}">ADMIN. MEDICAMENTOS</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
+                        <li><span class="tamano"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
+                        {% else %}
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

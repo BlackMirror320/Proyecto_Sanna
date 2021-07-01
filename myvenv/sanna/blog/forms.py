@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Medicamento, Post
 
 from django.forms import ModelForm
 #Para el Formulario
@@ -14,3 +14,38 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email','password1','password2']
+
+
+#Para el medicamento
+class MedicamentoForm(forms.ModelForm):
+    class Meta:
+        model = Medicamento
+        fields = '__all__'
+        widgets = {
+            'nombre_medicamento': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese Nombre del Medicamento'
+                }
+            ),
+            'precio': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese el Precio del Medicamento'
+                }
+            ),
+            'descripcion': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese una Descripción'
+                }
+            ),
+            'stock': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su Dirección',
+                    'type': 'number',
+                    'min': '0',
+                }
+            ),
+        }
