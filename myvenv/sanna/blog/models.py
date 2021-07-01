@@ -18,3 +18,29 @@ class Post(models.Model):
         return self.title
 
 # Create your models here.
+#Tabla Medicamento
+class Medicamento(models.Model):
+    	id_medicamento = models.AutoField(primary_key=True)
+    	nombre_medicamento = models.CharField(max_length=40)
+    	descripcion = models.TextField()
+    	precio = models.IntegerField()
+    	url = models.ImageField(default='not_found')
+    	stock = models.IntegerField(default=0)
+    	bioequivalente = models.ForeignKey('bioequivalente', on_delete=models.CASCADE,default='')
+    	class Meta:
+        	db_table = "medicamento"
+    	def __str__(self):
+        	return "id_medicamento:"+id_medicamento+", nombre_medicamento"+nombre_medicamento+", descripcion"+descripcion+", precio"+precio+", url"+url
+
+
+
+#TABLA DEL GENERO DE LOS PRODUCTOS, donde si el genero es 1, puede ser accion o 2 es rpg <- ejemplo
+#Tabla de si es Bioequivalente o no
+class Bioequivalente(models.Model):
+    bioequivalente = models.CharField(max_length=100)
+    class Meta:
+        db_table = "bioequivalente"
+    def __str__(self):
+        return u'{0}'.format(self.genero_producto)
+
+#random

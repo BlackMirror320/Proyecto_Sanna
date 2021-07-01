@@ -127,21 +127,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#STATICFILES_DIRS = [
-#    'C:/proyectos_django/MicroCorpX/AppMicroCorpX/static',
-#]
+STATICFILES_DIRS = [
+    'C:/proyectos_django/5to_semestre/Gestión Ágil/Proyecto_Sanna/myvenv/sanna/blog/static',
+]
 
 MEDIA_URL =  '/media/'
-#MEDIA_ROOT = 'C:/proyectos_django/MicroCorpX/AppMicroCorpX/static/img/media/'
+MEDIA_ROOT = 'C:/proyectos_django/5to_semestre/Gestión Ágil/Proyecto_Sanna/myvenv/sanna/blog/static/img/media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
-#EMAIL_HOST_USER = 'correo@gmail.com'
-#EMAIL_HOST_PASSWORD = 'Contraseña'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'correo@gmail.com'
+EMAIL_HOST_PASSWORD = 'Contraseña'

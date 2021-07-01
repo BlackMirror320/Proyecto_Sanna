@@ -4,81 +4,122 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Digiwealth</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <link rel="stylesheet" href="{% static 'css/Credenciales/registro.css' %}" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" /> <!--No es necesario rellenarlo-->
+        <meta name="author" content="" /> <!--No es necesario rellenarlo-->
+        <title>Registro Usuario</title>
+        <!-- Favicon-->
+        <link rel="icon" href="{% static 'img/favicon/medicine.ico' %}" type="image/png" /> <!--ESTE ES EL ICONO AL LADO DEL TITLE-->
+        {% include "header.html" %}
 </head>
 
 <body class="form">
-    <header class="form__header">
-        <div class="form__logo">
-            <a href="index.html"><img src="{% static 'img/logo/logo1.png' %}" alt="Heptacore"></a>
-        </div>
-        <div class="form__separador">
-
-        </div>
-        <span class="form__nombre">Registro Usuario</span>
-    </header>
-    <form action="" class="form__content" method="POST">
-      {% csrf_token %}
-        <div class="input-group center-fix">
-            <div class="input-group__icon">
-                <i class="lnr lnr-user"></i>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio'%}"><i class="fas fa-heartbeat"></i> DigiWealth</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menú
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-2">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Más Comprados</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'medicamentos' %}">Lista de Medicamentos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'acercade' %}">Acerca de Nosotros</a></li>
+                </ul>
             </div>
-            <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" class="input-group__input">
-        </div>
-
-        <div class="input-group center-fix">
-            <div class="input-group__icon">
-                <i class="lnr lnr-user"></i>
-            </div>
-            <input type="text" placeholder="RUT sin punto ni guión" name="rut" id="rut" class="input-group__input">
-        </div>
-
-        <div class="input-group center-fix">
-            <div class="input-group__icon">
-                <i class="lnr lnr-bubble"></i>
-            </div>
-            <input type="text" placeholder="Correo Electrónico" name="mail" id="mail" class="input-group__input">
-        </div>
-
-        <div class="input-group center-fix">
-            <div class="input-group__icon">
-                <i class="lnr lnr-lock"></i>
-            </div>
-            <input type="text" placeholder="Contraseña" name="pass" id="pass" class="input-group__input">
-        </div>
-
-        <div class="checkbox-group center-fix">
-            <input type="checkbox" name="terms" id="terms">
-            <label for="terms" class="checkbox-label">Acepto los <span id="terms">términos y condiciones de servicio.</span></label>
         </div>
         <div>
-            
+            <div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="submit-group center-fix">
-            <button class="btn btn--primary" type="submit">Registrarse          <i class="lnr lnr-chevron-right"></i></button>
+    </nav><br><br><br><br><br><br><br>
+    <div class="container">
+        <div class="container" style="border-style: inset;">
+            <center><h2 class="pt-2">REGISTRO</h2></center>
         </div>
+        <div class="container" style="border-style: inset;"><br>
+            <form role="form" action="#" method="POST" id="frmRegistro">
+            {% csrf_token %}
+              <div class="form-label-group container col-lg-6 pb-2" id="fgFirst_name">
+                <label for="first_name">Ingrese su Nombre</label>
+                <input required type="text" name="first_name" id="first_name" class="form-control" placeholder="Ingrese su Nombre">
+              </div>
+    
+              <div class="form-label-group container col-lg-6 pb-2" name id="fgLast_name">
+                <label for="last_name">Ingrese su Apellido Paterno</label>
+                <input required type="text" name="last_name" id="last_name" class="form-control" placeholder="Ingrese su Apellido Paterno">
+              </div>
+              
+              <div class="form-label-group container col-lg-6 pb-2" id="fgUsername">
+                <label for="username">Ingrese un nombre de Usuario</label>
+                <input required type="text" name="username" id="username" class="form-control" placeholder="Ingrese un nombre de Usuario"> 
+              </div>
+    
+              <div class="form-label-group container col-lg-6 pb-2" id="fgEmail">
+                <label for="email">Ingrese su Correo</label>
+                <input required type="text" name="email" id="email" class="form-control" placeholder="Ingrese su Correo">  
+              </div>
+    
+              <div class="form-label-group container col-lg-6 pb-2" id="fgPassword1">
+                <label for="password1">Ingrese su Contraseña</label>
+                <input required type="password" name="password1" id="password1" class="form-control password1" placeholder="Ingrese su Contraseña">
+              </div>
+    
+              <div class="form-label-group container col-lg-6 pb-2" id="fgPassword2">
+                <label for="password2">Confirme su Contraseña</label>
+                <input required type="password" name="password2" id="password2" class="form-control password2" placeholder="Re ingrese su Contraseña">
+              </div>
 
-
-    </form>
-
-
-
-    <footer>
-        <div class="footer">
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident eaque incidunt dignissimos optio sunt cupiditate quae, esse tempore veniam illo cumque modi earum. Saepe aliquid voluptatum iusto earum? In accusantium optio non ipsam similique quae assumenda repellat debitis? Autem.</span>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quod, itaque illum sed magni tempore similique nihil eligendi debitis libero assumenda, optio, suscipit deleniti odit at beatae minima? Temporibus, debitis assumenda. Asperiores consequuntur porro delectus libero et. Est, saepe cum.</span>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus maxime officiis quaerat itaque deleniti ratione labore nemo ad non modi, eligendi odio mollitia nisi? Voluptate, recusandae fugiat nihil aperiam doloribus porro minima reprehenderit eum iste eius! Maiores facilis mollitia est?</span>
-            <span>&#169 Todos los derechos reservados</span>
+              <center><div class="form-label-group container col-lg-6 pb-2 pt-1" id="fgPassword2">
+                <span class="fa fa-fw fa-eye password-icon show-password"></span> Mostrar Contraseña
+              </div></center>
+    
+              <center><button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Registrarse</button></center>
+              
+              <div class="centrar">
+                  <a href="javascript:history.back(1)"><i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="color: white"> Volver</i></a>
+              </div>
+              {% for message in messages %}
+              <p><b>{{message}}</b></p>
+              {% endfor %}
+          </form>
         </div>
-    </footer>
+        <div  style="border-style: outset;"></div>
+    </div><br><br><br><br>
+
+
+    {% include "footer.html" %}
 </body>
-
-
-
 </html>
+
+
+<script>
+  window.addEventListener("load", function() {
+ 
+    // icono para poder interaccionar con el elemento
+    showPassword = document.querySelector('.show-password');
+    showPassword.addEventListener('click', () => {
+ 
+      // elementos input de tipo password
+      password1 = document.querySelector('.password1');
+      password2 = document.querySelector('.password2');
+ 
+      if ( password1.type === "text" ) {
+        password1.type = "password"
+        password2.type = "password"
+        showPassword.classList.remove('fa-eye-slash');
+      } else {
+        password1.type = "text"
+        password2.type = "text"
+        showPassword.classList.toggle("fa-eye-slash");
+      }
+  })
+});
+</script>

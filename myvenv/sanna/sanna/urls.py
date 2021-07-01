@@ -29,7 +29,7 @@ urlpatterns = [
    
     #Crendeciales
     path('login',views.login,name='login'),
-    path('register',views.register,name='register'),
+    path('registro/', views.registro,name="registro"),
     path('accounts/',include('django.contrib.auth.urls')),
     #LISTA DE MEDICAMENTOS
     path('medicamentos',views.medicamentos, name='medicamentos'),
@@ -38,7 +38,7 @@ urlpatterns = [
     path('inicio/', views.inicio, name="inicio"),
     path('acercade/', views.acercade, name="acercade"),
     path('inicio_farmacia/<int:id>', views.inicio_farmacia, name="inicio_farmacia"),
-    path('registro/', views.registro,name="registro"),
+    
 
 
 
