@@ -66,6 +66,8 @@
                 <p class="text-center"><strong>STOCK:</strong> No hay Stock</p>
                 {% endif %}
                 <p class="text-center"><strong>PRECIO:</strong> ${{med.precio}}</p>
+                <p class="text-center"><strong>CONCENTRACIÓN:</strong> {{med.concentracion}}mg</p>
+                <p class="text-center"><strong>PRESENTACIÓN:</strong> {{med.presentacion}} tabletas/pastillas</p>
                 <div class=" text-center">
                     {% if med.stock > 0 %}
                     <form method="POST">
