@@ -43,7 +43,23 @@ class MedicamentoForm(forms.ModelForm):
             'stock': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese su Dirección',
+                    'placeholder': 'Ingrese Stock',
+                    'type': 'number',
+                    'min': '0',
+                }
+            ),
+            'concentracion': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese la Concentracion',
+                    'type': 'number',
+                    'min': '0',
+                }
+            ),
+            'concentracion': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese la Concentracion',
                     'type': 'number',
                     'min': '0',
                 }

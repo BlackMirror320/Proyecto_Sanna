@@ -53,8 +53,11 @@
                         <tr>
                             <th>NOMBRE</th>
                             <th>PRECIO</th>
+                            <th>STOCK</th>
                             <th>DESCRIPCIÓN</th>
                             <th>BIOEQUIVALENCIA</th>
+                            <th>CONCENTRACIÓN</th>
+                            <th>PRESENTACIÓN</th>
                             <th>IMAGEN MEDICAMENTO</th>
                             <th colspan="2">ACCIONES</th>
                         </tr>
@@ -62,8 +65,11 @@
                         <tr>
                             <td>{{med.nombre_medicamento}}</td>
                             <td><center>${{med.precio}}</center></td>
+                            <td><center>{{med.stock}}</center></td>
                             <td>{{med.descripcion}}</td>
                             <td><center>{{med.bioequivalente}}</center></td>
+                            <td><center>{{med.concentracion}}</center></td>
+                            <td><center>{{med.presentacion}}</center></td>
                             <td><center><img src="/media/{{med.url}}" width="50"></center></td>
                             <td>
                                 <center><a href="/edita_medicamento/{{med.id_medicamento}}"> | <i class="fas fa-pencil-alt"></i> | </a></center>

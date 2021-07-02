@@ -45,72 +45,28 @@
             </div>
         </div>
     </nav><br><br><br><br><br><br>
-    <div class="container d-flex align-items-center flex-column">
-      <h1 class="text-uppercase mb-0">Lista de Medicamentos</h1><br>
-        <table class="table table-dark font-weight-bold">
-            <thead>
-              <tr>
-                <th scope="col">N°</th>
-                <th scope="col"><center>Imagen del Medicamento</center></th>
-                <th scope="col"><center>Nombre Medicamento</center></th>
-                <th scope="col"><center>Concentración (mg)</center></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/paracetamol.jpg' %}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Paracetamol</center></td>
-                <td><br><br><br><center>500mg</center></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/Ibuprofeno_600MG_20C_BE_HD.jpg'%}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Ibuprofeno</center></td>
-                <td><br><br><br><center>600mg</center></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/aspirina.jpg' %}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Aspirina</center></td>
-                <td><br><br><br><center>100mg</center></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/Losartan_50MG_30C_BE_HD.jpg' %}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Losartan</center></td>
-                <td><br><br><br><center>50mg</center></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/metformina.jpg' %}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Glafornil</center></td>
-                <td><br><br><br><center>500mg</center></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td><center><img class="rounded" src="{% static 'img/meds_mas_comprados/atorvastatina.jpg' %}" height="169" width="298"></center></td>
-                <td><br><br><br><center>Atorvastatina</center></td>
-                <td><br><br><br><center>10mg</center></td>
-              </tr>
-            </tbody>
-          </table>
-    </div><br><br><br>
+
 
     {% block content %}
-      <div class="container row">
-        <div class="col-9">
+      <div class="container row" style="margin-left: 2%; margin-right: 2%;">
+        <div class="col-12">
           <div class="row">
               {% for med in medicamentos %}
                 <div class="col-md-3 col-sm-12 col-lg-4">
                   <div class="card" style="width: 100%; border-style: solid; border-color:gray">
                     <img src="/media/{{med.url}}" style="width:100%;" class="card-img-top" alt="{{med.nombre_medicamento}}"/>
-                    <h5 class="card-title text-center"> {{med.nombre_medicamento}}</h5>
-                    <p class="card-text text-center"> {{med.descripcion}}</p>
-                    <p class="card-text text-center"> ${{med.precio}}</p>
+                    <h5 class="card-title text-center pt-1"> {{med.nombre_medicamento}}</h5>
+                    <p class="card-text text-center"><strong>Concentración:</strong> {{med.concentracion}} mg</p>
+                    <p class="card-text text-center"> <strong>PRECIO:</strong> ${{med.precio}}</p>
+                    {% if user.is_superuser %}
                     <div class="card-footer text-center">
                       <!--<a href="/vista_medicamento.html/{{med.id_medicamento}}" class="btn btn-primary">DETALLES</a>-->
-                      <a href="{% url 'vista_medicamento' med.id_medicamento  %}" class="btn btn-primary">DETALLES</a>
+                      <a href="{% url 'admin_medicamento' %}" class="btn btn-primary">ADMINISTRAR</a>
+                    </div>
+                    {% endif %}
+                    <div class="card-footer text-center">
+                      <!--<a href="/vista_medicamento.html/{{med.id_medicamento}}" class="btn btn-primary">DETALLES</a>-->
+                      <a href="{% url 'vista_medicamento' med.id_medicamento  %}" class="btn btn-primary">MÁS DETALLES</a>
                     </div>
                   </div>
                   
@@ -118,17 +74,8 @@
               {% endfor %}
           </div>
         </div>
-
-        <div class="col-3">
-dsadsa
-        </div>
       </div>
       {% endblock %}
-
-
-
-
-
           <br><br><br><br><br><br>
           {% include "footer.html" %}
     </body>

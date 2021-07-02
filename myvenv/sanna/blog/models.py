@@ -19,20 +19,20 @@ class Post(models.Model):
         return self.title
 
 # Create your models here.
-#Tabla Medicamento
 class Medicamento(models.Model):
-    	id_medicamento = models.AutoField(primary_key=True)
-    	nombre_medicamento = models.CharField(max_length=40)
-    	descripcion = models.TextField()
-    	precio = models.IntegerField()
-    	url = models.ImageField(default='not_found')
-    	stock = models.IntegerField(default=0)
-    	bioequivalente = models.ForeignKey('Bioequivalente', on_delete=models.CASCADE,default='')
-#        id_farmacia_fk = models.ForeignKey('Farmacia', on_delete=models.CASCADE,default='')
-    	class Meta:
-        	db_table = "medicamento"
-    	def __str__(self):
-        	return "id_medicamento:"+id_medicamento+", nombre_medicamento"+nombre_medicamento+", descripcion"+descripcion+", precio"+precio+", url"+url
+    id_medicamento = models.AutoField(primary_key=True)
+    nombre_medicamento = models.CharField(max_length=40)
+    descripcion = models.TextField()
+    precio = models.IntegerField()
+    stock = models.IntegerField(default=0)
+    concentracion = models.IntegerField()
+    presentacion = models.IntegerField()
+    url = models.ImageField(default='not_found')
+    bioequivalente = models.ForeignKey('Bioequivalente', on_delete=models.CASCADE,default='')
+    class Meta:
+        db_table = "medicamento"
+    def __str__(self):
+        return "id_medicamento:"+id_medicamento+", nombre_medicamento"+nombre_medicamento+", descripcion"+descripcion+", precio"+precio+", url"+url+", concentracion"+concentracion+", presentacion"+presentacion
 
 
 
@@ -57,7 +57,19 @@ class Bioequivalente(models.Model):
 #        return "id_farmacia:"+id_farmacia+", nombre_farmacia"+nombre_farmacia+", rut_farmacia"+rut_farmacia+", direccion_farmacia"+direccion_farmacia
 
 
-#id
-#nombre
-#rut
-#direccion
+
+##Tabla Medicamento
+#class Medicamento(models.Model):
+#    	id_medicamento = models.AutoField(primary_key=True)
+#    	nombre_medicamento = models.CharField(max_length=40)
+#    	descripcion = models.TextField()
+#    	precio = models.IntegerField()
+##        concentracion = models.IntegerField()
+#    	url = models.ImageField(default='not_found')
+#    	stock = models.IntegerField(default=0)
+#    	bioequivalente = models.ForeignKey('Bioequivalente', on_delete=models.CASCADE,default='')
+##        id_farmacia_fk = models.ForeignKey('Farmacia', on_delete=models.CASCADE,default='')
+#    	class Meta:
+#        	db_table = "medicamento"
+#    	def __str__(self):
+#        	return "id_medicamento:"+id_medicamento+", nombre_medicamento"+nombre_medicamento+", descripcion"+descripcion+", precio"+precio+", url"+url

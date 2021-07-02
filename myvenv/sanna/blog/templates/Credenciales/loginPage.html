@@ -73,9 +73,11 @@
                         <div class="container col-lg-6">
                             <p style="color: white;">Olvidó su contraseña? <a href="{% url 'password_reset'%}">Actualiza tu contraseña!</a></p>   
                         </div>
+                        <div class="text-center">
                         {% for message in messages %}
-                        <p><b>{{message}}</b></p>
+                        <h4><b>{{message}}</b></h4>
                         {% endfor %}
+                        </div>
                         </form>
                     </div>
     </body>
