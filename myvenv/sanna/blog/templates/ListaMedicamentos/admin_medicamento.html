@@ -36,7 +36,7 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
-                            <li><span class="tamano"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
+                            <li><span class="tamano"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></span></li>
                             {% else %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">Inicio de Sesión</a></li>
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">Regístrate</a></li>
@@ -44,8 +44,8 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
-            <div class="container">
+            </nav><br><br><br><br><br><br>
+            <center><div class="container col-lg-12">
                 <center><h1><b>LISTADO DE MEDICAMENTOS AÑADIDOS</b></h1></center><hr>
                 <center><a href="{% url 'crea_medicamento' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar Medicamento</a></center><br>
                 <table class="table-bordered">
@@ -54,7 +54,7 @@
                             <th>NOMBRE</th>
                             <th>PRECIO</th>
                             <th>DESCRIPCIÓN</th>
-                            <th>BIOEQUIVALENTE</th>
+                            <th>BIOEQUIVALENCIA</th>
                             <th>IMAGEN MEDICAMENTO</th>
                             <th colspan="2">ACCIONES</th>
                         </tr>
@@ -75,7 +75,7 @@
                         {% endfor %}
                     </thead>
             </table>
-            </div>
+            </div></center><br><br><br><br><br><br><br><br>
             
             {% include "footer.html" %}
     </body>

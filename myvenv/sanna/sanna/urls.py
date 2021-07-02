@@ -34,7 +34,7 @@ urlpatterns = [
 #    path('accounts/',include('django.contrib.auth.urls')),
     #ADMINISTRACIÓN DE MEDICAMENTOS
     path('admin_medicamento', views.admin_medicamento, name="admin_medicamento"),
-    path('crea_medicamento', views.crea_medicamento, name="crea_medicamento"),
+    path('crea_medicamento/', views.crea_medicamento, name="crea_medicamento"),
     path('edita_medicamento/<int:id>', views.edita_medicamento),
     path('modificar/<int:id>',views.modificar),
     path('elimina_medicamento/<int:id>', views.elimina_medicamento),
