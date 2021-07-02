@@ -33,6 +33,7 @@ urlpatterns = [
     path('registro', views.registro,name="registro"),
 #    path('accounts/',include('django.contrib.auth.urls')),
     #ADMINISTRACIÓN DE MEDICAMENTOS
+    path('vista_medicamento/<int:id>',views.vista_medicamento, name="vista_medicamento"),
     path('admin_medicamento', views.admin_medicamento, name="admin_medicamento"),
     path('crea_medicamento/', views.crea_medicamento, name="crea_medicamento"),
     path('edita_medicamento/<int:id>', views.edita_medicamento),

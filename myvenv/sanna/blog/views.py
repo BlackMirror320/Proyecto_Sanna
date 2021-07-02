@@ -44,7 +44,34 @@ def inicio_farmacia(request):
 
 # <----- LISTA DE MEDICAMENTOS ----->
 def medicamentos(request):
-    return render(request, 'ListaMedicamentos/medicamentos.html', {'title':'medicamentos'})
+    form = MedicamentoForm()
+    medicamentos = Medicamento.objects.all()
+
+    if request.method == 'POST':
+        form = MedicamentoForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/medicamentos')
+            except:
+                pass
+    else:
+        form = MedicamentoForm()
+    context = {'form':form, 'medicamentos': medicamentos}
+    return render(request, 'ListaMedicamentos/medicamentos.html',context)
+
+
+def vista_medicamento(request, id):
+    if request.method == 'POST':
+        medicamento = Medicamento.objects.get(id_medicamento=id)
+        medicamento.stock -= 1 #medicamento.stock = medicamento.stock - 1
+        medicamento.save()
+        return redirect('vista_medicamento', id = id)
+    med = Medicamento.objects.get(id_medicamento=id)
+    #print(med)
+    form = MedicamentoForm(instance=med)
+    return render(request,'Medicamento/vista_medicamento.html', {'form':form, 'med':med})
+
 
 # <----- CREDENCIALES ----->
 def registro(request):
