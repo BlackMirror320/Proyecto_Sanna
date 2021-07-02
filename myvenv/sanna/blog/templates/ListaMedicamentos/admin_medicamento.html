@@ -32,7 +32,7 @@
                     <div>
                         <ul class="navbar-nav ms-auto">
                             {% if user.is_superuser %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' }%">ADMIN. MEDICAMENTOS</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'admin_medicamento' %}">ADMIN. MEDICAMENTOS</a></li>
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'perfil_usuario' %}">PERFIL</a></li>
@@ -61,7 +61,7 @@
                         {% for med in medicamentos %}
                         <tr>
                             <td>{{med.nombre_medicamento}}</td>
-                            <td>${{med.precio}}</td>
+                            <td><center>${{med.precio}}</center></td>
                             <td>{{med.descripcion}}</td>
                             <td><center>{{med.bioequivalente}}</center></td>
                             <td><center><img src="/media/{{med.url}}" width="50"></center></td>

@@ -70,7 +70,7 @@ def vista_medicamento(request, id):
     med = Medicamento.objects.get(id_medicamento=id)
     #print(med)
     form = MedicamentoForm(instance=med)
-    return render(request,'Medicamento/vista_medicamento.html', {'form':form, 'med':med})
+    return render(request,'ListaMedicamentos/vista_medicamento.html', {'form':form, 'med':med})
 
 
 # <----- CREDENCIALES ----->

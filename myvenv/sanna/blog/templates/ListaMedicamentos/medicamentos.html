@@ -109,7 +109,8 @@
                     <p class="card-text text-center"> {{med.descripcion}}</p>
                     <p class="card-text text-center"> ${{med.precio}}</p>
                     <div class="card-footer text-center">
-                      <a href="/vista_medicamento.html/{{med.id_medicamento}}" class="btn btn-primary">DETALLES</a>
+                      <!--<a href="/vista_medicamento.html/{{med.id_medicamento}}" class="btn btn-primary">DETALLES</a>-->
+                      <a href="{% url 'vista_medicamento' med.id_medicamento  %}" class="btn btn-primary">DETALLES</a>
                     </div>
                   </div>
                   
